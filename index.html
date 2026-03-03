@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SDS ÉNERGIE — Ingénierie conseils, bureau d’étude CVC</title>
+  <meta name="description" content="SDS ÉNERGIE — Ingénierie conseils, bureau d’étude CVC : études, dimensionnements, équilibrage hydraulique, suivi technique. 16 avenue Flore, 95500 Le Thillay." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#ffffff;
+      --text:#002060;
+      --muted:#002060;
+      --accent:#002060;
+      --line:rgba(0,32,96,.14);
+      --shadow:0 14px 40px rgba(0,0,0,.08);
+      --radius:18px;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background: var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.88);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      min-width:160px;
+    }
+    .logo-img{
+      height:55px; /* <- logo un peu plus gros */
+      width:auto;
+      object-fit:contain;
+      display:block;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:26px;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .navlinks a{
+      opacity:.92;
+      padding:8px 6px;
+      border-radius:10px;
+    }
+    .navlinks a:hover{
+      opacity:1;
+      background: rgba(0,32,96,.06);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(0,32,96,.22);
+      background:#fff;
+      transition:.2s transform,.2s background,.2s box-shadow;
+      cursor:pointer;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.08)}
+    .btn.primary{
+      background: var(--accent);
+      color:#fff;
+      border:1px solid var(--accent);
+    }
+
+    /* Layout */
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    section{padding:34px 0}
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card.pad{padding:18px}
+
+    /* Hero */
+    .hero{
+      padding:36px 0 24px;
+    }
+    .hero-shell{
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      position:relative;
+      min-height: 420px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.72) 48%, rgba(255,255,255,.55) 100%),
+        url("assets/hero.jpg") center/cover no-repeat;
+    }
+    .hero-inner{
+      padding:34px 26px;
+      max-width: 720px;
+    }
+
+    .kicker{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-1px;
+      color: var(--text);
+    }
+    .h1-sub{
+      display:block;
+      font-size:26px;
+      font-weight:800;
+      margin-top:10px;
+      letter-spacing:-.4px;
+      color: var(--text);
+    }
+
+    p{margin:0;color:var(--text);line-height:1.7}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:18px
+    }
+    .stat{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+    }
+    .stat strong{display:block;font-size:16px;color:var(--text)}
+    .stat span{font-size:12px;color:var(--text);opacity:.88}
+
+    /* Sections headings */
+    .section-title{
+      display:flex;align-items:end;justify-content:space-between;gap:16px
+    }
+    .section-title h2{
+      margin:0;font-size:28px;letter-spacing:-.4px;color:var(--text)
+    }
+    .muted{color:var(--text);opacity:.9}
+
+    /* Services cards */
+    .cards{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service{
+      padding:18px;border-radius:16px;border:1px solid var(--line);
+      background: rgba(0,32,96,.04);
+      min-height:160px;
+    }
+    .service h3{margin:10px 0 8px;color:var(--text);letter-spacing:-.2px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--text);opacity:.9;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+      background: rgba(255,255,255,.8);
+      font-weight:700;
+    }
+
+    /* Societe */
+    .two{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:14px}
+    .box{
+      padding:18px;border-radius:16px;border:1px solid var(--line);
+      background: rgba(0,32,96,.04);
+    }
+    .box h3{margin:0 0 10px;letter-spacing:-.2px}
+    .bigtext{font-size:15px;line-height:1.75;opacity:.95}
+
+    /* References */
+    .refs{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .refcat h3{margin:0 0 10px}
+    .reflist{margin:0;padding-left:18px;line-height:1.75}
+    .reflist li{margin:6px 0}
+
+    /* Contact */
+    form{display:grid;gap:10px;margin-top:10px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,32,96,.20);
+      background: rgba(255,255,255,.95);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px;resize:vertical}
+
+    footer{
+      padding:22px 0;
+      border-top:1px solid var(--line);
+      margin-top:18px;
+      color:var(--text);
+      opacity:.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .nav{gap:10px}
+      .navlinks{gap:14px}
+      .hero-inner{max-width:100%}
+      .cards{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .refs{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .h1-sub{font-size:22px}
+      .stats{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+    @media (max-width: 680px){
+      .navlinks{display:none} /* menu compact mobile */
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <!-- Gauche : logo seul -->
+    <a class="brand" href="#accueil" aria-label="Accueil SDS ÉNERGIE">
+      <img class="logo-img" src="logo.png" alt="Logo SDS ÉNERGIE">
+    </a>
+
+    <!-- Milieu : 4 mots clés -->
+    <nav class="navlinks" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#societe">Société</a>
+      <a href="#services">Services</a>
+      <a href="#references">Références</a>
+    </nav>
+
+    <!-- Droite : Nous contacter -->
+    <a class="btn primary" href="#contact">Nous contacter</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1) ACCUEIL -->
+  <section id="accueil" class="hero">
+    <div class="hero-shell">
+      <div class="hero-inner">
+        <span class="kicker">📐 Bureau d’étude CVC • Études & dimensionnements • Équilibrage hydraulique • Suivi technique</span>
+
+        <h1>
+          SDS ÉNERGIE
+          <span class="h1-sub">Ingénierie conseils, bureau d’étude CVC</span>
+        </h1>
+
+        <p>
+          Nous réalisons les études et le dimensionnement d’installations CVC (Chauffage, Ventilation, Climatisation),
+          de la faisabilité au suivi d’exécution, dans une démarche d’ingénierie rigoureuse, structurée et orientée
+          performance énergétique.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Contactez-nous</a>
+          <a class="btn" href="#services">Voir les services</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Expertise</strong>
+            <span>Études & dimensionnements optimisés</span>
+          </div>
+          <div class="stat">
+            <strong>Pilotage technique</strong>
+            <span>Coordination & suivi opérationnel</span>
+          </div>
+          <div class="stat">
+            <strong>Projets</strong>
+            <span>Logements • Tertiaire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) SOCIETE -->
+  <section id="societe">
+    <div class="section-title">
+      <h2>Société</h2>
+      <div class="muted">SDS ÉNERGIE — Bureau d’étude en ingénierie CVC</div>
+    </div>
+
+    <div class="two">
+      <div class="box">
+        <h3>SDS ÉNERGIE — Bureau d’étude en ingénierie CVC</h3>
+        <div class="bigtext">
+          <p>
+            SDS ÉNERGIE est un bureau d’étude spécialisé en ingénierie CVC (Chauffage, Ventilation, Climatisation),
+            dédié à la conception et au dimensionnement d’installations techniques performantes, durables et conformes
+            aux exigences réglementaires.
+          </p>
+          <p style="margin-top:12px">
+            Implanté en Île-de-France, nous intervenons sur l’ensemble du territoire national auprès de maîtres d’ouvrage,
+            promoteurs, architectes et entreprises générales. Notre mission est d’apporter une expertise technique
+            structurée et opérationnelle, en accompagnant les projets de la phase de faisabilité jusqu’au suivi d’exécution.
+          </p>
+          <p style="margin-top:12px">
+            Nous réalisons les études et le dimensionnement d’installations CVC pour des opérations de logements collectifs,
+            bâtiments tertiaires et projets techniques spécifiques. Notre intervention couvre les études de faisabilité,
+            le dimensionnement des installations, la production des pièces écrites et graphiques, l’élaboration des notes
+            de calcul et synoptiques, l’équilibrage hydraulique ainsi que le suivi technique en phase travaux. Chaque projet
+            fait l’objet d’une analyse approfondie afin d’optimiser la performance énergétique, la cohérence des systèmes
+            et la maîtrise budgétaire.
+          </p>
+          <p style="margin-top:12px">
+            SDS ÉNERGIE développe une approche d’ingénierie fondée sur la rigueur, la cohérence technique et la recherche
+            de performance. Nous privilégions une méthode de travail structurée reposant sur des hypothèses clairement définies,
+            des choix techniques argumentés, des livrables clairs et exploitables chantier ainsi qu’une coordination technique
+            maîtrisée. Notre objectif est de sécuriser les décisions techniques et de garantir un avancement fluide et maîtrisé
+            des opérations.
+          </p>
+          <p style="margin-top:12px">
+            Nous intervenons en tant que partenaire technique indépendant, avec une vision pragmatique et orientée résultats.
+            Notre engagement repose sur l’exigence technique, le pilotage opérationnel, la clarté des échanges et la performance
+            énergétique.
+          </p>
+          <p style="margin-top:12px">
+            <strong>SDS ÉNERGIE, c’est une ingénierie structurée, réactive et adaptée aux contraintes réelles du chantier.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Coordonnées</h3>
+        <p style="margin:0 0 10px;opacity:.95;">
+          📍 <strong>16 avenue Flore, 95500 Le Thillay</strong><br/>
+          Implanté en Île-de-France, SDS ÉNERGIE intervient sur l’ensemble du territoire national selon la nature et les exigences des projets.
+        </p>
+        <p style="margin:0;opacity:.95;">
+          <strong>Téléphone :</strong> 06.17.63.35.03<br/>
+          <strong>Email :</strong> contact@sds-energie.com
+        </p>
+        <div style="margin-top:14px">
+          <a class="btn primary" href="#contact">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) SERVICES -->
+  <section id="services">
+    <div class="section-title">
+      <h2>Services</h2>
+      <div class="muted">Des documents techniques structurés, conçus pour une mise en œuvre fluide sur chantier.</div>
+    </div>
+
+    <div class="box" style="margin-top:14px">
+      <p class="bigtext" style="margin:0">
+        SDS ÉNERGIE accompagne ses clients dans la conception et la réalisation d’installations CVC et Plomberie, avec une approche
+        d’ingénierie structurée, orientée performance et maîtrise technique. Nous intervenons sur l’ensemble des phases d’un projet,
+        de l’étude initiale jusqu’au suivi d’exécution.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="service">
+        <span class="pill">📐 Ingénierie & conception</span>
+        <h3>Ingénierie & conception CVC / Plomberie</h3>
+        <p class="bigtext">
+          Nous analysons chaque opération dans sa globalité afin de proposer des solutions techniques cohérentes, performantes et
+          adaptées aux contraintes architecturales, réglementaires et budgétaires. Notre objectif est de sécuriser les choix techniques
+          dès les premières phases d’étude.
+        </p>
+      </div>
+
+      <div class="service">
+        <span class="pill">🧮 Dimensionnement</span>
+        <h3>Dimensionnement des installations</h3>
+        <p class="bigtext">
+          Nous assurons le dimensionnement des systèmes de chauffage, ventilation, climatisation, réseaux hydrauliques et installations
+          sanitaires. Chaque solution est optimisée afin de garantir performance énergétique, fiabilité des équipements et maîtrise des coûts.
+        </p>
+      </div>
+
+      <div class="service">
+        <span class="pill">📄 Pièces techniques</span>
+        <h3>Production des pièces techniques</h3>
+        <p class="bigtext">
+          Plans techniques, schémas de principe (chaufferie, sous-station vapeur, production ECS), synoptiques, notes de calcul et pièces écrites.
+          Nos livrables sont structurés, argumentés et directement exploitables en phase travaux.
+        </p>
+      </div>
+
+      <div class="service">
+        <span class="pill">⚙️ Équilibrage</span>
+        <h3>Équilibrage hydraulique & performance des réseaux</h3>
+        <p class="bigtext">
+          Études d’équilibrage des réseaux chauffage et ECS afin d’assurer une répartition optimale des débits et la conformité aux performances attendues.
+          Un rapport technique formalise les réglages et valide les hypothèses de dimensionnement.
+        </p>
+      </div>
+
+      <div class="service">
+        <span class="pill">🏗️ Exécution</span>
+        <h3>Suivi technique & phase travaux</h3>
+        <p class="bigtext">
+          Accompagnement en phase d’exécution à travers un pilotage technique rigoureux : coordination, validation des mises en œuvre,
+          assistance technique et accompagnement jusqu’à la réception des installations.
+        </p>
+      </div>
+
+      <div class="service">
+        <span class="pill">🤝 Assistance</span>
+        <h3>Appui technique & coordination</h3>
+        <p class="bigtext">
+          Participation aux réunions, mise au point technique, ajustements en cours de chantier, traitement rapide des points bloquants
+          et sécurisation des décisions techniques.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) REFERENCES -->
+  <section id="references">
+    <div class="section-title">
+      <h2>Références</h2>
+      <div class="muted">Opérations logements, tertiaire, installations techniques et audits — CVC & Plomberie.</div>
+    </div>
+
+    <div class="box" style="margin-top:14px">
+      <p class="bigtext" style="margin:0">
+        SDS ÉNERGIE intervient sur des opérations de logements collectifs, bâtiments tertiaires, installations techniques spécifiques et audits d’envergure,
+        en ingénierie CVC & Plomberie.
+      </p>
+    </div>
+
+    <div class="refs">
+      <div class="box refcat">
+        <h3>Logements collectifs</h3>
+        <ul class="reflist">
+          <li><strong>Construction de 42 logements</strong> – Mézy-sur-Seine — Études CVC/Plomberie et suivi de chantier pour DELTA ENERGIE (Promoteur : PICHET)</li>
+          <li><strong>Construction de 45 logements</strong> – Sérifontaine — Études CVC/Plomberie pour DELTA ENERGIE (Promoteur : PIERREVAL)</li>
+          <li><strong>Construction de 42 logements</strong> – Asnières-sur-Seine — Études CVC/Plomberie pour DELTA ENERGIE (Promoteur : PIERREVAL)</li>
+          <li><strong>Construction de 99 logements</strong> – Montigny-lès-Cormeilles — Études CVC/Plomberie et suivi de chantier pour PC93 (Promoteur : LNC)</li>
+          <li><strong>Construction de 34 logements et cabinet médical</strong> – Villecresnes — Études CVC/Plomberie et suivi de chantier pour UTB</li>
+          <li><strong>Résidence “Le Titien”</strong> – 71 logements – Courbevoie — Étude et réalisation de l’équilibrage hydraulique pour M-ENERGIES</li>
+          <li><strong>Résidence RIVP</strong> – 631 logements – Paris — Étude et équilibrage hydraulique pour GD ENERGIE</li>
+          <li><strong>Résidence “Pinson”</strong> – 6 bâtiments – Joinville-le-Pont — Audit chauffage & ECS et équilibrage pour DALKIA</li>
+        </ul>
+      </div>
+
+      <div class="box refcat">
+        <h3>Chaufferies & Sous-stations</h3>
+        <ul class="reflist">
+          <li>Élaboration de schémas de principe chaufferie pour GD ENERGIE — Bailleur RIVP</li>
+          <li>Dossiers d’exécution de sous-stations vapeur pour GD ENERGIE (résidences RIVP)</li>
+          <li>Dossiers d’exécution de sous-stations vapeur pour M-ENERGIES — Paris</li>
+          <li>Dossiers d’exécution de chaufferies en Île-de-France pour DALKIA</li>
+          <li>Modélisation 3D d’une sous-station vapeur — Rue Mogador, Paris</li>
+        </ul>
+
+        <h3 style="margin-top:18px">Tertiaire & Installations spécifiques</h3>
+        <ul class="reflist">
+          <li>Implantation CTA — Théâtre de Coignières</li>
+          <li>Études CVC avec plans 3D pour installation de CTA en cabines de parfumerie — M-ENERGIES</li>
+          <li>Études CVC pour installation de CTA en plateaux de bureaux — M-ENERGIES</li>
+          <li>Études Plomberie — Bâtiment 4SO — Îlot Saint-Germain — SAGA</li>
+          <li>Audit et relevé de l’existant CVC/PLB/CFO/CFA — 7 niveaux de parking — Tour Montparnasse — ENGIE SOLUTIONS</li>
+          <li>Audit et étude technique — Stand de tir de Chatou</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (garde la même structure que ta V1) -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>Contact</h2>
+      <div class="muted">Réponse rapide • Devis</div>
+    </div>
+
+    <div class="two">
+      <div class="card pad">
+        <h3 style="margin:0 0 10px;letter-spacing:-.2px">Coordonnées</h3>
+        <div class="box" style="background:rgba(0,32,96,.04)">
+          <p style="margin:0;line-height:1.8">
+            📍 <strong>16 avenue Flore, 95500 Le Thillay</strong><br/>
+            <strong>Téléphone :</strong> 06.17.63.35.03<br/>
+            <strong>Email :</strong> contact@sds-energie.com
+          </p>
+        </div>
+        <p style="margin:10px 0 0;opacity:.9">
+          Implanté en Île-de-France, SDS ÉNERGIE intervient sur l’ensemble du territoire national selon la nature et les exigences des projets.
+        </p>
+      </div>
+
+      <div class="card pad">
+        <h3 style="margin:0 0 10px;letter-spacing:-.2px">Nous contacter</h3>
+        <p style="margin:0;opacity:.92">
+          Merci de nous préciser votre besoin (type de projet, localisation, délais prévisionnels).
+          Notre équipe vous recontactera dans les plus brefs délais afin d’étudier votre demande.
+        </p>
+
+        <form action="mailto:contact@sds-energie.com" method="post" enctype="text/plain">
+          <input name="Nom" placeholder="Votre nom" required>
+          <input name="Téléphone" placeholder="Téléphone">
+          <input type="email" name="Email" placeholder="Email" required>
+          <textarea name="Message" placeholder="Votre demande (type de projet, localisation, délais…)" required></textarea>
+          <button class="btn primary" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>© <span id="y"></span> SDS ÉNERGIE. Tous droits réservés.</div>
+      <div style="opacity:.9">
+        <a href="mentions-legales.html">Mentions légales</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
